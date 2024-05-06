@@ -1,0 +1,17 @@
+services:
+  ubuntu:
+    build:
+      context: .
+      args:
+        - ubuntu_version=${ubuntu_version}
+        - user_name=${user_name}
+        - user_password=${user_password}
+      dockerfile: Dockerfile
+    container_name: ${container_name}
+    hostname: ${host_name}
+    tty: true
+    stdin_open: true
+    privileged: true
+    ports:
+      - "${host_port}:${container_port}"
+    command: /sbin/init
